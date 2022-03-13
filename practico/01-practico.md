@@ -1,101 +1,333 @@
-# Instrucciones
+## 0. Objetivo del práctico
 
-Esta tarea debe ser resolvida en GitHub Class Room. Para acceder a la [Tarea N°0 hacer click aquí](https://classroom.github.com/a/Mh3me9e0). Si aún tienes dudas de cómo interactuar con [GitHub Class Roomm revisa el práctico](../example/01-practico)
+El objetivo del práctico es introducirnos en herramientas que permiten establecer un flujo de trabajo en R. Para ello, aprenderemos cómo abrir un nuevo **script** y a crear un nuevo **proyecto de R (o Rproject)**. Además, utilizaremos GitHub, que es una plataforma que permite alojar los .Rproj y códigos de cada uno de ustedes. De hecho, tal como mostraremos en el práctico, utilizaremos **GitHub***ClassRoom* para que ustedes puedan subir sus tareas. 
 
-## Objetivo de la tarea y resultados del aprendizaje
+Previo a esto, deben ver el [Tutorial de instalación de R](https://youtu.be/Zj8yL-nx9vM). 
 
-El objetivo de esta tarea es ser una breve introducción a GitHub. Para ello debes leer la siguiente guía y responder algunas preguntas. Luego de responder esas preguntas debes hacer "push" a tu tarea.
+Ahora aprenderemos a crear scripts, proyectos, colaborar y resolver las tareas. 
 
-# Básicos: antes de iniciar
+## 1. Crear un nuevo script (.R)
 
-## Perfil de usuario
+Para que empecemos a trabajar en el lenguaje R, lo primero es saber cómo abrir un nuevo script; pero *¡¿qué es un script?!* Dicho en términos simples, el script es la *"hoja"* sobre la cual escribiremos y guardaremos cada uno de los códigos que trabajemos cuando estemos trabajando con datos cuantitativos. Si bien podemos ejecutar los códigos directamente desde la **consola**, estos se eliminarán una vez que cerremos la sesión en RStudio:
 
-Su página de perfil le dice a la gente la historia de su trabajo a través de los repositorios que le interesan, las contribuciones que ha hecho y las conversaciones que ha tenido. No olvides que tu cuenta de GitHub te permite acceder a *RStudio Cloud* y a otros beneficios como estudiante. 
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/consola.png", error = FALSE)
+```
 
-## Usando markdown en GitHub (¡y pronto en R!)
+Así, cuando escribamos en nuestra **script**, podremos archivar los códigos que vayamos ejecutando, para poder reproducirlos posteriormente, compartirlos con otras personas, entre otros. Ahora, lo que nos convoca: **¿cómo puedo abrir un nuevo script?**
 
-Sí... estas escribiendo en algo que parece una consola. Este *texto plano* te permite escribir y comunicar sin restricciones de software. Markdown se abre en todos los editores de texto, y no requiere ser pagado (como en Word). También se pueden incorporar imágenes, **remarcar** palabras o hacerlas *cursivas*. Aprenderemos de esto la próxima sesión, pero si te quieres adelantar [revisa esto](https://docs.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax).
+Hacerlo es bastante sencillo. En la sección *superior izquierda* de RStudio, debe hacerse click en la hoja con un signo + verde y, luego, seleccionar la opción **R Script** en el menú desplegado: 
 
-## 1. Git and GitHub 
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/open-script.png", error = FALSE)
+```
 
-Git es un **sistema de control de versiones distribuido (VCS)**, lo que significa que es una herramienta útil para rastrear fácilmente los cambios en su código, colaborar y compartir. Con Git puede realizar un seguimiento de los cambios que realiza en su proyecto para que siempre tenga un registro de lo que ha trabajado y pueda volver fácilmente a una versión anterior si es necesario. También facilita el trabajo con otras personas: ¡varios grupos de personas pueden trabajar juntas en el mismo proyecto y fusionar sus cambios en una fuente final!
+Otra manera de abrir un nuevo script es hacer click en la opción **File** de la *barra superior*
 
-GitHub es una forma de usar el mismo poder de Git todo en línea con una interfaz fácil de usar. Se utiliza en todo el mundo del software y más allá para colaborar y mantener el historial de proyectos.
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/file.png", error = FALSE)
+```
+
+para, posteriormente seleccionar **New File > R Script** en los menús desplegados:
+
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/new-script.png", error = FALSE)
+```
+
+Por último, podemos mantener presionadas las teclas **Ctrl + Shift + N** en Windows, o **⌘ + Shift + N**
+en *Mac*.
+ 
+Ya hemos abierto un nuevo script (**¡Genial!**), que se debe ver de la siguiente manera:
+
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/script.png", error = FALSE)
+```
+ 
+Podemos escribir en él los códigos, que se ejecutarán en la **consola** una vez mantengamos presionadas las teclas **Control + Enter** al inicio de la línea
+
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/script-console.png", error = FALSE)
+```
+
+Ahora, por supuesto, debemos guardar nuestro script una vez terminemos de trabajar en él, a modo de no perder el trabajo avanzado. Para ello, podemos hacer click en el **disquete** situado en la *barra que se encuentra sobre el código*
+
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/save.jpg", error = FALSE)
+```
+
+Para luego, elegir el directorio donde deseamos almacenar nuestro script, y asignarle un nombre determinado (en este caso **script1**) que, ojalá, tenga que ver con los procedimientos ejecutados en este (por ejemplo, *procesamiento* o *análisis*). La extensión de los archivos que almacenan scripts es **.R** (*¡no lo olvides!*)
+
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/save-script.png", error = FALSE)
+```
+
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/name-script.png", error = FALSE)
+```
+
+Una vez almacenado en una carpeta, cada vez que clickeemos en los casetes o mantengamos presionadas las teclas **Control + S**, el archivo se actualizará a la última versión que hayamos guardado. 
+
+## 2. Crear un nuevo proyecto de R (.Rproj)
+
+¡Todavía nos falta algo para iniciarnos en el flujo de trabajo del curso! debemos crear un nuevo **Proyecto de R o R Project (*.Rproj*)**. ¿Qué es esto, se preguntarán ustedes? en pocas palabras, será la **semilla de nuestra carpeta de trabajo**, es decir, constituye el centro a partir del cual estaremos trabajando el resto de archivos incluidos en nuestro trabajo con los datos, como los *scripts*, los *datos* con los que trabajamos, los *gráficos* que generaremos durante el análisis, y todo aquello vinculado a los procesos que ejecutemos en un trabajo en específico. A lo largo del curso aprenderemos a trabajar adecuadamente con los .Rproj, manteniendo un flujo de trabajo que *facilita la reproductibilidad* de los procesos con los que aprenderemos los contenidos, así como de las tareas que ustedes rendirán durante el semestre. Sin embargo, ahora nos limitaremos a aprender a crear un nuevo proyecto.
+
+¿Cómo lo hacemos? Es bastante sencillo, y se asemeja a la creación de scripts. No obstante, esta vez nos dirigiremos a la sección *superior derecha de RStudio*, donde se encuentra una *R inscrita a un cubo*
+
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/rproj.png", error = FALSE)
+```
+
+Haremos click en ella, y se desplegará un panel con opciones. Clickearemos en **New Project...**
+
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/new-proj.png", error = FALSE)
+```
+
+Emergerá una ventana que nos preguntará en qué carpeta queremos alojar nuestro nuevo proyecto. Podemos elegir crear una nueva carpeta haciendo click en **New Directory**, o elegir una carpeta ya existente en nuestro computador, clickeando en **Existing Directory**
+
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/new-proj1.png", error = FALSE)
+```
+
+Si optamos por lo primero, se nos preguntará qué tipo de proyecto deseamos crear. En este caso, elegiremos **New Project**
+
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/new-proj2.png", error = FALSE)
+```
+
+Aparecerá una ventana que nos pregunta el nombre que queremos asignarle a la nueva carpeta que crearemos, y en qué carpeta se alojará esta. Si hacemos click en *Browse*, podemos buscar un directorio específico en el cual queramos alojar la nueva carpeta
+
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/new-proj3.png", error = FALSE)
+```
+
+En caso de elegir lo segundo, se nos solicitará directamente en qué carpeta (ya existente) queremos alojar nuestro proyecto. Una vez más, podemos utilizar *Browse* para navegar entre las carpetas de nuestro computador, hasta hallar aquella en que deseamos alojar este nuevo archivo
+
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/new-proj4.png", error = FALSE)
+```
+
+¡Listo! ahora sólo debemos ir a nuestra carpeta y buscar el proyecto que hemos creado. Es un archivo de extensión .Rproj, cuyo ícono es una R inscrita en un cubo. 
+
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/new-proj5.png", error = FALSE)
+```
+
+Es fundamental que, de aquí en adelante, siempre que vayamos a trabajar en alguna tarea con R, **creemos el nuevo proyecto y lo abramos para empezar a trabajar**. Ello setearé nuestro directorio de trabajo directamente en la carpeta donde se encuentra el archivo .Rproj, lo cual nos permitirá trabajar colaborativamente con mayor facilidad (¡algo **fundamental** en el curso!). Además, cada vez que vayamos a retomar nuestro trabajo en algún proyecto, debemos **siempre abrir el proyecto antes que cualquier cosa**, para lo cual debemos hacer doble click sobre su ícono. 
+
+## 3. GitHub
+
+Es un sistema de control de versiones en línea que rastrea los cambios de códigos, facilita la colaboración y el acceso abierto. En este curso será un programa esencial para el desarrollo tanto de clases como prácticos, por lo que en este práctico vamos a aprender a utilizarlo repasando aspectos básicos. Esto además será profundizado y detallado en clases.
 
 
-## 2. El flujo de GitHub
+### Ventajas:
 
-El flujo de trabajo en  GitHub permite experimentar y colaborar en sus proyectos fácilmente, sin el riesgo de perder su trabajo anterior. Revisemos sus partes:
+Las principales ventajas son:
 
-### 2.1  Repositorios
-Un repositorio es donde ocurre el trabajo de su proyecto; como la carpeta de su proyecto. Contiene todos los archivos y el historial de revisiones de su proyecto. Puede trabajar solo dentro de un repositorio o invitar a otros a colaborar con usted en esos archivos.
+- Facilita el flujo del trabajo y la colaboración entre usuarios 
 
-Dentro de los repositorios encontrarás los archivos **README.md** (o léame). Estos archivos de extensión *markdown* (.md) indican información general o básica de su proyecto. 
+- Es de acceso abierto 
 
-Para obtener más información sobre los repositorios, lea ["Creating, Cloning, and Archiving Repositories](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/about-repositories) y ["About README's"](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/about-readmes). 
+- Permite hacer seguimiento a los errores
 
-
-### 2.2  Clonar
-
-Cuando se crea un repositorio con GitHub, se almacena de forma remota en la nube. **Puede clonar un repositorio para crear una copia local en su computadora y luego usar GitHub Desktop para sincronizar los dos**. Para obtener más información sobre la clonación, lea ["clonación de un repositorio"](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository).
-
-### 2.3 Commit y Push
-
-**Commit** y **Push** es la forma en que puede agregar los cambios que realizó en su computador local al repositorio remoto en GitHub. De esa manera, la profesora y/o compañeras/os de curso pueden ver su último trabajo cuando está listo para compartirlo.
-
-- El "commit": mensaje descriptivo "útil" para recordar y comunicar el cambio que se hizo (eg. "Agregué análisis descriptivo" o "Edité los gráficos").
-
-- El "push":  comando que permite subir el cambio una vez que hayas confirmado que quieres subir este cambio. En un push puedes tener varios "commits" de un proyecto. 
+- Tiene variedades de funciones y plataformas
 
 
-### 2.4 Otros términos del flujo
-
-Los siguientes conceptos no los utilizaremos en el curso, pero de todas formas nunca está demás conocerlos.
+Pero la plataforma central en el curso será **GitHub Classroom**
 
 
-####  Branches
+## 4. Github Classroom
 
-Son ramas de los repositorios.  Uno puede tomar el "tronco" principal de un proyecto-repositorio (*main* o *master*) y experimentar con él mientras otros también lo hacen. Una vez que quieres mostrar los cambios o tests que hiciste en el repositorio, puedes solicitar su revisión a través de un *pull request*.
+Es una plataforma de Github que facilita la interacción y aprendizaje entre estudiantes y profesores. Esta plataforma la usaremos a lo largo del curso, principalmente porque permite estudiantes trabajen individual y colectivamente usando los repositorios de github. En esta plataforma entregarán sus tareas, recibirán comentarios y retroalimentaciones pudiendo trabajar colaborativamente.
 
-Para obtener más información sobre los branches, lea ["About Branches"](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-branches).
+- Pasos para ingresar a Github classroom
 
-#### Forks
+1. Crear cuenta: 
 
-Un Fork es otra forma de copiar un repositorio, pero generalmente se usa cuando desea copiar un proyecto o contribuir en este. Esto le permite experimentar libremente con los cambios sin afectar el proyecto original y es muy popular cuando se contribuye a proyectos de software de código abierto. Para obtener más información sobre Forks, lea ["Fork a repo"](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo)
+2. Dirigirse al [Link](https://n9.cl/954ne ) 
 
-#### Pull requests
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/create.png", error = FALSE)
+```
 
-Ya lo mencionábamos. Cuando trabajamos con "branches" (ramas) utilizamos las "pull request" o solicitdes para informar a otros sobre los cambios que desea realizar y solicitar sus comentarios. Dentro de estas solicitudes se pueden discutir y revisar cada uno de los cambios.
+3. Clickear en “Crea una cuenta”
 
-Una vez que una solicitud  está lista para usarse, se puede fusionar en su rama principal (*merge to master*). Para obtener más información sobre las solicitudes de estracción, lea ["About Pull Requests"](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests).
+4. Introduce tu correo electrónico 
 
-##  Tarea 0
+5. Crea una contraseña
 
-Luego de leer esta breve introducción, debes contestar esta guía:
+6. Introduce el nombre de usuario (similar a su nombre)
 
-1. ¿Cuál es tu nombre?
+7. Clickear en Crear una cuenta
 
-R:
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/capt.png", error = FALSE)
+```
 
-2. ¿Cuál es la diferencia entre R y RStudio?
+8. Ve al correo electrónico que pusiste anteriormente 
 
-
-R:
-
-3. ¿Con qué comando puedes **subir** los cambios del repositorio local al remoto?
-
-R:
-
-4. Crea un .Rproject llamado 00-tarea.Rproject
-
-5. En el repositorio, crea una carpeta llamada "imagenes". Dentro de esta carpeta deja una imagen de tu sociólogo/a o cientista social preferido/a. Al archivo debes llamarlo "sociologo-preferido.jpg"
+9. Copia el código e introdúcelo en la página
 
 
-## Recursos
+{{< div "note" >}}
+Recuerda que el correo que uses debe ser el mismo correo que usaste en pasos anteriores. [Ver tutorial 1](https://youtu.be/9YD-F6-ktes).
+{{< /div >}}
 
-¿Quiéres aprender más? Siempre es posible. Te dejamos unos documentos adicionales 
--  [Un breve video que explica qué es GitHub](https://www.youtube.com/watch?v=w3jLJU7DT5E&feature=youtu.be) 
 
--  [Recursos de aprendizaje de Git y GitHub](https://docs.github.com/en/github/getting-started-with-github/git-and-github-learning-resources) 
+## 3. Github Desktop
 
--  [Comprender el flujo de GitHub](https://guides.github.com/introduction/flow/)
+Esta aplicación es una versión de Github que puede ser instalada tanto en windows como en mac. Facilitando el uso de Github a través de la coordinación de los cambios locales y la plataforma.
+
+a. Instalar Github Desktop
+
+b. Dirigirse a [Link](https://desktop.github.com/) 
+
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/deskdown.png", error = FALSE)
+```
+
+c. Crea una carpeta para los contenidos del curso
+
+d. Vincula la dirección de la carpeta
+
+{{< div "note" >}} 
+
+#### Para Windows
+
+   - Clickear en Download for Windows (64bit)
+
+   - Ejecutar el archivo descargado
+
+   - Introduce tu usuario y contraseña
+
+#### Para Mac
+
+   - Clickear en Download for macOS
+
+   - Ejecutar el archivo descargado
+
+   - Introduce tu usuario y contraseña
+   
+{{< /div >}}
+
+
+## 4. Botones principales en GitHub Desktop:
+
+- **Clone repository**: Copia un repositorio a tu computador
+
+- **Create new repository**: crea un nuevo repositorio
+
+- **Add existing repository**: incorpora un repositorio existente
+
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/con1desk.png", error = FALSE)
+```
+
+- **Open the repository in Rstudio**: Abre todo el proyecto en Rstudio
+
+- **View the files of your repository in explorer**: Muestra los archivos en la carpeta que se encuentra
+
+- **Open the repository on Github**: abre el repositorio en la página
+
+- **Commit to master**: forma de guardar los cambios
+
+- **Push origin**: manda los cambios al repositorio en línea
+
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/con2desk.jpg", error = FALSE)
+```
+
+
+## 5. Conceptos claves de Github
+
+- **Repositorios**: Es donde se alberga el trabajo, como una carpeta que contiene todos los archivos y el historial de cambios realizados. Estos se almacenan en la nube
+
+- **Cloning**: Los repositorios pueden clonarse creando copias locales que extraen toda la información y antiguas versiones del repositorio. Después se puede ir subiendo los cambios para sincronizar la copia local y la copia de github.
+
+- **Commit**: Es la forma de guardar el estado de tu proyecto, como una captura en la que se deja un mensaje informativo
+
+- **Push**: Esta es la forma en la que se puede agregar ( _subir_ ) los cambios locales al repositorio de Github.
+
+- **README**: Se utiliza a modo de presentación o introducción de los repositorios.
+
+- **Pull**: Esta es la forma en la que se puede agregar ( _bajar_ ) los cambios del repositorio de Github al repositorio local.
+
+#### Flujo de trabajo colectivo y de acceso abierto
+
+- **Forks**: Es otra forma de copiar un repositorio, permitiendo hacer cambios sin afectar al proyecto original.
+
+- **Pull requests**: Es una forma de solicitar que sean incorporados los cambios que has hecho desde un repositorio local, al repositorio original.
+
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/concepclav.png", error = FALSE)
+```
+
+## 6. GitHub Class Room del curso (learn-R-UAH)
+
+**Pasos para las dinámicas del curso**
+
+### 6.1 Recibir una tarea 
+
+### 6.2 Ingresa el [link](https://classroom.github.com/classrooms/86887318-learn-r-uah-2021)
+
+  a. El link contiene la tarea, ustedes deben aceptar la tarea la cual creará un _**repositorio**_ que contendrá la *información* y las *instrucciones* de la tarea.
+
+  
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/ingrestarea.png", error = FALSE)
+```
+  
+  b. Para eso deben ir a _**GitHub Desktop**_, _**clonar** el respositorio desde internet_.
+  
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/paso2tarea.png", error = FALSE)
+```
+  
+  c. Luego deben escoger el repositorio de la tarea, escoger la carpeta en la que se encontrará y clonarlo
+  
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/paso3tarea.png", error = FALSE)
+``` 
+  
+  d. Después deben abrir el repositorio creado a través de _**RStudio**_, ahí verán el mismo contenido pero en un archivo _**.md**_ 
+
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/paso4tarea.png", error = FALSE)
+``` 
+  
+### 6.3 Resolver una tarea
+
+  a. Ahora resolveremos la **Tarea 0** en conjunto, una vez abierto el [repositorio         clonado](https://classroom.github.com/classrooms/86887318-learn-r-uah-2021), recuerden que es en este repositorio donde deben completar y subir la tarea
+
+  b. La tarea se encuentra en un archivo llamado `*README*` con información de los conceptos básicos y el flujo de GitHub, deben leerlo detalladamente.
+ 
+  c. Una vez leido deberán ir al final del archivo en **Tarea 0** y responder las preguntas correspondientes
+  
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/paso5tarea.png", error = FALSE)
+``` 
+  
+### 6.4 Tarea 0
+
+¡Puedes ver las instrucciones de la [tarea en el siguiente link](../assignment/00-tarea) o en [GitHub Class Room](https://classroom.github.com/classrooms/86887318-learn-r-uah-2021)
+
+### 6.5 Subir una tarea
+
+  a. Una vez listo, deberán _**subir**_ la tarea al repositorio remoto a través de GitHub Desktop
+  
+```{r, echo=FALSE, out.width="60%"}
+    knitr::include_graphics("/img/example/paso6tarea.png", error = FALSE)
+``` 
+
+### 6.6 Recibir comentarios 
+
+  a. Les llegará un correo con los comentarios y retroalimentación de su tarea
+  
+
+## 7. Video tutorial en Youtube
+
+Recuerden que el [video de asociado a este práctico](https://www.youtube.com/watch?v=Zj8yL-nx9vM) y muchos más podrán encontrarlos en el [canal de youtube del curso](https://www.youtube.com/channel/UCqBUeqBttVjS6h8fawK8sWg)
+
+<div class="embed-responsive embed-responsive-16by9">
+<iframe class="embed-responsive-item" src="https://www.youtube.com/watch?v=Zj8yL-nx9vM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
